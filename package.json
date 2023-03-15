@@ -1,0 +1,28 @@
+{
+  "name": "finance-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon ./src/server.js",
+    "start": "node ./src/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mohamilr/finance-api.git"
+  },
+  "author": "Mohammed Ibrahim",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mohamilr/finance-api/issues"
+  },
+  "homepage": "https://github.com/Mohamilr/finance-api#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.21"
+  }
+}
