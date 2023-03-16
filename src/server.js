@@ -1,8 +1,18 @@
 const express = require("express");
+const dotenv = require("dotenv");
+const db = require("./database/database");
 
-const port = process.env.PORT || 4000;
+dotenv.config();
+
+const port = process.env.PORT || 2000;
 
 const app = express();
+app.use(express.json({ extented: false }));
+app.use(
+  express.urlencoded({
+    extended: true,
+  })
+);
 
 app.use("/", (req, res) => {
   res.send("hello there");
