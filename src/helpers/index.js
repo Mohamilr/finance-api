@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+const { v4: uuid } = require("uuid");
 require("dotenv").config();
 
 const jsonResponse = (res, status, code, message, data) => {
@@ -19,6 +20,10 @@ const generateAccountNumber = (length = 10) => {
   return result;
 };
 
+const generateTransactionRef = () => {
+  return uuid();
+};
+
 const generateToken = (data) => {
   return jwt.sign(data, process.env.JWT_SECRET, {
     expiresIn: "24h",
@@ -32,6 +37,7 @@ const verifyToken = (token) => {
 module.exports = {
   jsonResponse,
   generateAccountNumber,
+  generateTransactionRef,
   generateToken,
   verifyToken,
 };

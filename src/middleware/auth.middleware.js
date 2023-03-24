@@ -25,7 +25,7 @@ class AuthMiddleWare {
     const user = await User.findOne({ email });
 
     if (!user) {
-      return jsonResponse(res, "error", 401, "User does not exist");
+      return jsonResponse(res, "error", 404, "User does not exist");
     }
 
     const valid = await bcrypt.compare(password, user?.password);
@@ -48,7 +48,7 @@ class AuthMiddleWare {
       const user = await User.findOne({ _id: decoded.id });
 
       if (!user) {
-        return jsonResponse(res, "error", 401, "User does not exist");
+        return jsonResponse(res, "error", 404, "User does not exist");
       }
 
       req.userId = decoded.id;
