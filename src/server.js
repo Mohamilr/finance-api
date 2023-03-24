@@ -1,13 +1,12 @@
 const express = require("express");
-const dotenv = require("dotenv");
 const http = require("http");
-const db = require("./database/database");
 const userRouter = require("./routes/user.route");
 const transactionRouter = require("./routes/transaction.route");
+const { jsonResponse } = require("./helpers");
+require("dotenv").config();
+require("./database/database");
 
-dotenv.config();
-
-const port = process.env.PORT || 9000;
+const port = process.env.PORT || 4000;
 
 const app = express();
 const server = http.createServer(app);
@@ -19,12 +18,16 @@ app.use(
   })
 );
 
+app.get("/", (req, res) => {
+  res.send("welcome");
+});
+
 app.use("/api/v1", userRouter);
 app.use("/api/v1", transactionRouter);
 
-// app.use("/api/v1", (req, res) => {
-//   res.send("hello there");
-// });
+app.use("*", (req, res) => {
+  jsonResponse(res, "error", 404, "Route does not exist");
+});
 
 server.listen(port, () => {
   console.log(`app is listening on port ${port}`);
