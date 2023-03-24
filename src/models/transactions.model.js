@@ -13,7 +13,10 @@ const transactionsSchema = new Schema({
     required: true,
   },
   transaction_ref: String,
-  amount: Number,
+  amount: {
+    type: Number,
+    default: 0,
+  },
 });
 
 const Transaction = (module.exports = mongoose.model(

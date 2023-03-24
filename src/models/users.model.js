@@ -12,7 +12,10 @@ const usersSchema = new Schema({
     required: true,
   },
   account_number: Number,
-  balance: Number,
+  balance: {
+    type: Number,
+    default: 0,
+  },
 });
 
 usersSchema.pre("save", async function (next) {
